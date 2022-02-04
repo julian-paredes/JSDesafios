@@ -1,0 +1,100 @@
+/* Estilos Simulador: Metrónomo */ 
+/* Inicialización */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: Ubuntu,sans-serif;
+    font-weight: 600;
+    color: #47a5c8;
+} 
+
+body    {
+    background-color: #393c41;
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 95vh;
+}
+.metronomo-container {
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 10vh 10vw;
+    margin: 0 16px;
+    gap: 16px;
+    border-radius: 30px;
+    background: #292c30;
+    box-shadow:  12px 12px 24px #194e61,-12px -12px 24px #194e61;
+}
+.bpm-container {
+    border-radius: 10px;
+    background: #292c30;
+    box-shadow: inset 4px 4px 6px #194e61, inset -4px -4px 6px #194e61;
+    padding: 4px;
+    width: 220px;
+}
+
+.bpm-text {
+    font-size: 24px;
+}
+
+#bpm-numero {
+    font-size: 56px;
+}
+
+.bpm-ajust {
+    display: flex;
+}
+
+.bpm {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.boton-grande {
+    min-width: 56px;
+    min-height: 36px;
+    background: #292c30;
+    box-shadow:  8px 8px 16px #194e61,-8px -8px 16px #194e61;
+    margin: 0 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 40px;
+    border-radius: 10px;
+}
+
+.boton-grande:hover {
+    background: linear-gradient(145deg, #194e61, #297c9b);
+    box-shadow:  8px 8px 16px #297c9b,-8px -8px 16px #297c9b;
+
+}
+
+
+.boton-chico {
+    width: 24px;
+    height: 24px;
+    background: #292c30;
+    box-shadow:  8px 8px 16px #194e61,-8px -8px 16px #194e61;
+    margin: 0 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    border-radius: 50px;
+}
+
+.boton-chico:hover {
+    background: linear-gradient(145deg, #194e61, #297c9b);
+    box-shadow:  8px 8px 16px #194e61,-8px -8px 16px #297c9b;
+}

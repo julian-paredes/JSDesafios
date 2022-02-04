@@ -4,31 +4,45 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Desafio 7 - Eventos</title>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Metronomo Interactivo</title>
 </head>
 <body>
-    <div>
-        <p>Ingrese el BPM deseado:</p>
-        <form id="formularioBpm">
-            <input type="text" id="inputBPM">
-       </form>
-      
-    </div>
-    <div>
-        <p>Ingrese la cantidad de Beats deseados:</p>
-        <form id="formularioBeats">
-            <input type="text" id="inputBeats">
-            <input type="submit" value="Enviar" id="boton">
-       </form>
-      
-    </div>
+    <main>
+        <div class="metronomo-container">
+            <h1>Metrónomo Interactivo</h1>
+            
+            <div class="bpm-container">
+                <p class="bpm-text">
+                    <span id="bpm-numero">120</span> BPM
+                </p>
+            </div>
+            <div class="bpm-ajust">
+                <div class="bpm">
+                    <button class="boton-grande" id="bpm-boton-restar" >-</button>
+                </div>
+                <div  class="bpm">
+                    <button class="boton-grande" id="bpm-boton-sumar">+</button>
+                </div>
+            </div>
 
-
-
-
-
-
-
+            <div class="bpm">
+                <div >
+                    <button class="boton-chico" id="boton-restar-beats">-</button>
+                </div>
+                <div>
+                    <div>
+                        <h4>Cantidad de Beats:</h4>
+                        <h3 id="numero-beat">4</h3>
+                    </div>
+                </div>
+                <div >
+                    <button class="boton-chico" id="boton-sumar-beats">+</button>
+                </div>
+            </div>
+        </div>
+    </main>
     <script src="main.js"></script>
 </body>
 </html>
