@@ -1,4 +1,4 @@
-// Proyecto final - Simulador: Metrónomo - Pre Entrega Nro 2
+// Proyecto final - Simulador: Metrónomo - Desafio jQuery en mi Proyecto.
 
 // Declaraciones de Clases
 
@@ -20,41 +20,44 @@ class ListaDeBeats {
 // Funciones para actualizar valores de BPM y Beats en el simulador
 
 const actualizarBPMs = () => {
-    let bpms = document.querySelector("#bpm-numero");
-    bpms.innerHTML = nuevoMetronomo.bpm;
+    let bpms = $("#bpm-numero");        // Implementacion de jQuery para tomar el nodo y actualizar el valor de BPM
+    bpms.html(nuevoMetronomo.bpm);
 }
 
 const actualizarMetrica = () => {
-    let beats = document.querySelector("#numero-beat");
-    beats.innerHTML = nuevoMetronomo.metrica;
+
+    let beats = $("#numero-beat");      // Implementacion de jQuery para tomar el nodo y actualizar el valor de los Beats
+    beats.html(nuevoMetronomo.metrica);
+    /* let beats = document.querySelector("#numero-beat");
+    beats.innerHTML = nuevoMetronomo.metrica; */
 }
 
 
 // Declaraciones de Eventos
 // Eventos al presionar los botones para cambiar de BPM
 
-const botonRestarpresionadoBPM = document.querySelector("#bpm-boton-restar");
-botonRestarpresionadoBPM.addEventListener("click", () => {
+const botonRestarpresionadoBPM = $("#bpm-boton-restar");        // jQuery - Eventos
+botonRestarpresionadoBPM.click(() => {
 
     if (nuevoMetronomo.bpm <= 10)
         {return 0};
-    nuevoMetronomo.bpm = nuevoMetronomo.bpm - 1;
+    nuevoMetronomo.bpm--;
     actualizarBPMs();
 })
 
-const botonSumarpresionadoBPM = document.querySelector("#bpm-boton-sumar");
-botonSumarpresionadoBPM.addEventListener("click", () => {
+const botonSumarpresionadoBPM = $("#bpm-boton-sumar");
+botonSumarpresionadoBPM.click(() => {
 
     if (nuevoMetronomo.bpm >= 300)
         {return 0};
-    nuevoMetronomo.bpm = nuevoMetronomo.bpm + 1;
+    nuevoMetronomo.bpm++;
     actualizarBPMs();
 })
 
 // Eventos al presionar los botones para cambiar de Beats
 
-const botonRestarpresionadoMetrica = document.querySelector("#boton-restar-beats");
-botonRestarpresionadoMetrica.addEventListener("click", () => {
+const botonRestarpresionadoMetrica = $("#boton-restar-beats");
+botonRestarpresionadoMetrica.click(() => {
 
     if (nuevoMetronomo.metrica <= 2)
         {return 0};
@@ -62,8 +65,8 @@ botonRestarpresionadoMetrica.addEventListener("click", () => {
     actualizarMetrica();
 })
 
-const botonSumarpresionadoMetrica = document.querySelector("#boton-sumar-beats");
-botonSumarpresionadoMetrica.addEventListener("click", () => {
+const botonSumarpresionadoMetrica = $("#boton-sumar-beats");
+botonSumarpresionadoMetrica.click(() => {
 
     if (nuevoMetronomo.metrica >= 16)
         {return 0};
