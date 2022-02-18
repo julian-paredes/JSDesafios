@@ -21,6 +21,8 @@ class ListaDeBeats {
 let intervalo;
 let conteo = 1;
 let play = false;
+let busqueda;
+let id_track;
 
 
 
@@ -76,6 +78,33 @@ const mostrarBeats = () => {
 
 
 
+
+// Funcion para Buscador - API para buscar BPMs
+
+const buscar = () => {
+    busqueda = $("#campoBusqueda").val();
+    let URL_API = `https://api.happi.dev/v1/music?apikey=fb54fdT6RON3uTzQLFBEfDtkF4PLKqYDfdFEZHgWyCzo6ZbeaD9VwIjQ&limit=12&q=${busqueda}`;
+    $(".cardResultado").remove();
+    $.get(URL_API, (respuesta, estado) => {
+        if (estado === "success") {
+            let canciones = respuesta.result;
+            for (const cancion of canciones) {
+                $(".contenedorResultados").append(`
+                <div class="cardResultado">
+                    <img src="${cancion.cover}" alt="" class="cover"> 
+                    <div>
+                        <h3 class="titulo">${cancion.track}</h3>
+                        <h4 class="banda">${cancion.artist}</h4>
+                    </div>
+                    <div class="bpmCard">
+                        <p class="bpmCancion">${cancion.bpm}<span class="textoBPMCard">bpm</span></p>
+                    </div>          
+                </div>`);
+                id_track = cancion.id_track; 
+            }
+        }
+    }) 
+};
 
 // Fin de Declaracion de Funciones
 
@@ -136,7 +165,38 @@ botonPlayParar.addEventListener("click", playParar);
 const botonGuardar = document.querySelector("#boton-guardar");
 botonGuardar.addEventListener("click", guardarMetronomo);
 
+// Evento para buscar BPMs
+
+$("#botonBuscar").on("click", () => {
+    buscar();
+});
+
+$("#campoBusqueda").on('keypress',function(e) {
+    if(e.which == 13) {
+        e.preventDefault();
+        buscar();
+    }
+});
+
 // Fin de Declaracion de eventos
+
+// Animaciones
+
+// ANIMACIONES
+
+$("#botonConfig").click(() => { 
+    $(".contenedorConfig").slideDown(700, () => {
+        $(".botonesConfig").fadeIn();
+    });
+});
+
+$("#botonCerrar").click(() => { 
+    $(".contenedorConfig").slideUp(700, () => {
+        $(".botonesConfig").fadeOut();
+    });
+});
+
+
 
 
 /* Main */
@@ -162,3 +222,8 @@ for (let i = 1; i <= nuevoMetronomo.metrica; i++){
 actualizarBPMs();                           // Llamado de funciones de actualizar los bpm y la metrica en el simulador
 actualizarMetrica();
 mostrarBeats();                             // Llamado de funcion para mostrar los beats en funcion de la métrica
+
+
+
+
+
