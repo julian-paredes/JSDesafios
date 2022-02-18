@@ -82,22 +82,22 @@ const mostrarBeats = () => {
 // Funcion para Buscador - API para buscar BPMs
 
 const buscar = () => {
-    busqueda = $("#campoBusqueda").val();
+    busqueda = $("#campo-busqueda").val();
     let URL_API = `https://api.happi.dev/v1/music?apikey=fb54fdT6RON3uTzQLFBEfDtkF4PLKqYDfdFEZHgWyCzo6ZbeaD9VwIjQ&limit=12&q=${busqueda}`;
-    $(".cardResultado").remove();
+    $(".card-resultado").remove();
     $.get(URL_API, (respuesta, estado) => {
         if (estado === "success") {
             let canciones = respuesta.result;
             for (const cancion of canciones) {
-                $(".contenedorResultados").append(`
-                <div class="cardResultado">
+                $(".contenedor-resultados").append(`
+                <div class="card-resultado">
                     <img src="${cancion.cover}" alt="" class="cover"> 
                     <div>
                         <h3 class="titulo">${cancion.track}</h3>
                         <h4 class="banda">${cancion.artist}</h4>
                     </div>
-                    <div class="bpmCard">
-                        <p class="bpmCancion">${cancion.bpm}<span class="textoBPMCard">bpm</span></p>
+                    <div class="bpm-card">
+                        <p class="bpm-cancion">${cancion.bpm}<span class="texto-bpm-Card">bpm</span></p>
                     </div>          
                 </div>`);
                 id_track = cancion.id_track; 
@@ -167,11 +167,11 @@ botonGuardar.addEventListener("click", guardarMetronomo);
 
 // Evento para buscar BPMs
 
-$("#botonBuscar").on("click", () => {
+$("#boton-buscar").on("click", () => {
     buscar();
 });
 
-$("#campoBusqueda").on('keypress',function(e) {
+$("#campo-busqueda").on('keypress',function(e) {
     if(e.which == 13) {
         e.preventDefault();
         buscar();
@@ -182,17 +182,15 @@ $("#campoBusqueda").on('keypress',function(e) {
 
 // Animaciones
 
-// ANIMACIONES
-
-$("#botonConfig").click(() => { 
-    $(".contenedorConfig").slideDown(700, () => {
-        $(".botonesConfig").fadeIn();
+$("#boton-config").click(() => { 
+    $(".contenedor-config").slideDown(700, () => {
+        $(".botones-config").fadeIn();
     });
 });
 
-$("#botonCerrar").click(() => { 
-    $(".contenedorConfig").slideUp(700, () => {
-        $(".botonesConfig").fadeOut();
+$("#boton-cerrar").click(() => { 
+    $(".contenedor-config").slideUp(700, () => {
+        $(".botones-config").fadeOut();
     });
 });
 
